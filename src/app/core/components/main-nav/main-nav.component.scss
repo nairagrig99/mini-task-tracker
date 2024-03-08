@@ -1,0 +1,178 @@
+@import "src/app/shared/style/variable";
+@import "src/app/shared/style/mixin";
+
+.toolbar {
+  &_leftSight {
+    @include flex-align-center;
+  }
+
+  &_add {
+    @include flex-align-center;
+    font-size: 15px;
+    border: 1px solid grey;
+    border-radius: 50px;
+    padding: 1px 7px;
+
+    mat-icon {
+      @include flex-justify-content(center);
+      background: $red;
+      border-radius: 50px;
+      font-size: 16px;
+      margin-right: 5px;
+    }
+
+    span {
+      font-weight: 300;
+    }
+  }
+
+  &_search {
+    width: 500px;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 10px 15px 10px 38px;;
+      border-radius: 50px;
+      color: white;
+      outline: none;
+      border: 1px solid grey;
+      background-color: $background-color;
+
+      &::placeholder {
+        color: white;
+      }
+    }
+
+    mat-icon {
+      position: absolute;
+      left: 7px;
+      top: 7px;
+    }
+  }
+
+  &_user {
+    span {
+      background: $purple;
+      font-size: 14px;
+      font-weight: 300;
+      padding: 7px;
+      border-radius: 50px;
+    }
+  }
+
+}
+
+.container {
+  @include flex-row;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-toolbar {
+  background-color: $background-color;
+  border-bottom: 1px solid grey;
+  @include flex-justify-content(space-between)
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.app-name {
+  margin-left: 8px;
+}
+
+.sidenav-container {
+  flex: 1;
+
+  nav {
+    cursor: pointer;
+    border-bottom: 1px solid grey;
+
+    ul {
+      margin: 5px;
+
+      li {
+        list-style-type: none;
+        padding: 4px 8px;
+        margin-bottom: 5px;
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: 16px;
+          font-weight: 400;
+        }
+
+        img {
+          margin-right: 7px;
+        }
+
+        &:hover {
+          background-color: rgb(58 58 60);
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+
+  &_project {
+    padding: 47px;
+
+    button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 15px 0;
+    }
+
+    &-block {
+      @include flex-justify-content(start);
+      cursor: pointer;
+
+      &_status {
+        width: 18px;
+        height: 18px;
+        background: #9ee7e3;
+        border-radius: 5px;
+        margin-right: 5px;
+      }
+
+    }
+  }
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+mat-sidenav-container, mat-sidenav, mat-nav-list {
+  background-color: $background-color;
+  color: white;
+}
+
+mat-sidenav {
+  width: 273px;
+  left: -27px;
+}
+
+.left, .down {
+  transition: 1s ease-in;
+  margin-right: 5px;
+}
+
+.left {
+  transform: rotate(-90deg);
+}
+
+.down {
+  transform: rotate(360deg);
+}
