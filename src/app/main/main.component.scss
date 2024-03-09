@@ -1,0 +1,20 @@
+@import 'src/app/shared/style/mixin';
+
+.project {
+  @include flex-align-center;
+  background-color: #1e1f21;
+  padding: 20px 20px 50px 20px;
+  border-bottom: 1px solid grey;
+
+  &-logo {
+    width: 35px;
+    height: 35px;
+    background: #9ee7e3;
+    border-radius: 5px;
+    margin-right: 5px;
+  }
+
+  &-name {
+    margin-bottom: 0;
+  }
+}

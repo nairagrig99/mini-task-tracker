@@ -1,0 +1,19 @@
+@import "src/app/shared/style/mixin";
+@import "src/app/shared/style/variable";
+
+.select-accessor {
+  @include flex-align-center;
+
+  &_label {
+    width: 150px;
+  }
+
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+mat-label {
+  width: 150px;
+}

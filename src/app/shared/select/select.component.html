@@ -1,0 +1,12 @@
+<div class="select-accessor">
+  <div class="select-accessor_label">
+    <mat-label>{{label}}</mat-label>
+  </div>
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedValue" name="food">
+      @for (food of foods; track food) {
+        <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

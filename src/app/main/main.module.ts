@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {MainComponent} from "./main.component";
+import {SharedModule} from "../shared/shared.module";
 
 const route: Routes = [
   {
@@ -25,6 +26,7 @@ const route: Routes = [
   declarations: [MainComponent],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild(route)
   ]
 })

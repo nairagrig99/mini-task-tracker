@@ -1,0 +1,22 @@
+@import "src/app/shared/style/mixin";
+@import "src/app/shared/style/variable";
+
+.mat-typography {
+  background-color: $background-color;
+}
+
+.create-task {
+  @include flex-row;
+
+  flex-direction: column;
+  width: 700px;
+  color: white;
+
+  &-settings {
+    @include flex-row;
+    flex-direction: column;
+
+  }
+
+
+}
