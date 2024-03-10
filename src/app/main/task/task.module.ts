@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {TaskComponent} from "./task.component";
 import {TaskItemComponent} from "./task-item/task-item.component";
 import {RouterModule, Routes} from "@angular/router";
+import {SharedModule} from "../../shared/shared.module";
 
 const route: Routes = [
   {
@@ -13,10 +14,12 @@ const route: Routes = [
 
 @NgModule({
   declarations: [TaskComponent, TaskItemComponent],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(route)
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(route),
+        NgOptimizedImage,
+        SharedModule
+    ]
 })
 
 export class TaskModule {

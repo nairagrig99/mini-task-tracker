@@ -1,10 +1,31 @@
 <section>
-
-
   <button mat-button (click)="openDialog()">Open dialog</button>
-
-
   <div class="show-task-lists">
-
+    @for (task of taskList | async; track task) {
+      <div class="show-task-lists-block">
+        <div class="name">
+          <img
+            class="show-task-lists-block_check"
+            width="16"
+            height="16"
+            ngSrc="assets/svg/check.svg" alt="">
+          <span>{{ task.title }}</span>
+        </div>
+        <div>
+          <p class="show-task-lists-block_round"
+             [backgroundColor]="{'status':task.status}">{{ task.status }}</p>
+          <p class="show-task-lists-block_round"
+             [backgroundColor]="{'priority':task.priority}">{{ task.priority }}</p>
+        </div>
+        <div>
+          @for (users of task?.performers; track users) {
+            <p>{{ users }}</p>
+          }
+        </div>
+        <div>
+          <p>{{ task?.deadline }}</p>
+        </div>
+      </div>
+    }
   </div>
 </section>

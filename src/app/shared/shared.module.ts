@@ -14,13 +14,15 @@ import {InputComponent} from "./input/input.component";
 import {SelectComponent} from "./select/select.component";
 import {DatapickerComponent} from "./datapicker/datapicker.component";
 import {MultiSelectComponent} from "./multi-select/multi-select.component";
+import {ColorDirective} from "./directives/color.directive";
 
 @NgModule({
   declarations: [
     InputComponent,
     SelectComponent,
     DatapickerComponent,
-    MultiSelectComponent
+    MultiSelectComponent,
+    ColorDirective
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import {MultiSelectComponent} from "./multi-select/multi-select.component";
     MultiSelectComponent,
     InputComponent,
     DatapickerComponent,
-    SelectComponent
+    SelectComponent,
+    ColorDirective
   ],
   providers: [MatDatepickerModule]
 })

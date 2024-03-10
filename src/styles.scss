@@ -15,6 +15,9 @@ body {
   border: 1px solid grey;
 }
 
-mat-select-trigger, mat-select {
+mat-select-trigger,
+mat-select,
+.mat-mdc-input-element {
   color: white !important;
 }
+

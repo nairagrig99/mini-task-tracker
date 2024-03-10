@@ -3,6 +3,21 @@
 
 .mat-typography {
   background-color: $background-color;
+
+  mat-icon {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+  }
+}
+
+mat-dialog-actions {
+  background-color: $background-color;
+  @include flex-justify-content(end);
+}
+
+mat-dialog-content {
+  overflow-x: hidden;
 }
 
 .create-task {
@@ -15,7 +30,6 @@
   &-settings {
     @include flex-row;
     flex-direction: column;
-
   }
 
 

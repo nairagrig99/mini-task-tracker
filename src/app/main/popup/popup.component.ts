@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {TaskInterface} from "../../shared/interface/task-interface";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {performers, priority, statusValue} from "../../shared/select-value/default-select-value";
 import {SelectModelInterface} from "../../shared/interface/select-model.interface";
+
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {AddTaskAction} from "../../shared/store/task-action";
 
 @Component({
   selector: 'app-popup',
@@ -18,8 +21,12 @@ export class PopupComponent implements OnInit {
   public performers: SelectModelInterface[] = performers;
   public priority: SelectModelInterface[] = priority;
 
+  // @Output() createTask: EventEmitter<any> = new EventEmitter<any>()
+
   constructor(private store: Store,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private dialogRef: MatDialogRef<PopupComponent>,
+              @Inject(MAT_DIALOG_DATA) private data: any) {
 
   }
 
@@ -50,22 +57,34 @@ export class PopupComponent implements OnInit {
   ngOnInit(): void {
     // this.getTask = this.store.select(getTasksList);
     this.initForm();
-    this.form.valueChanges.subscribe((s) => {
-      console.log('getchangess from parent', s)
-    })
   }
 
   private initForm(): void {
     this.form = this.fb.group({
-      title: new FormControl([null]),
-      name: new FormControl(null),
-      performers: new FormControl([null]),
-      deadline: new FormControl(null),
-      status: new FormControl(null),
-      priority: new FormControl(null),
-
+      title: [null, [Validators.required, Validators.min(3)]],
+      name: [null, [Validators.required, Validators.min(3)]],
+      performers: [null, Validators.required],
+      deadline: [null, Validators.required],
+      status: [null, Validators.required],
+      priority: [null, Validators.required]
     })
   }
 
+  public addTask(): void {
+    console.log(this.form.valid);
+    if (this.form.valid) {
+      const taskID = Math.floor((Math.random() * 100));
+      console.log('taskID', taskID)
+      const mappingFormValue: TaskInterface = {
+        id: +taskID,
+        ...this.form.value
+      }
+      this.store.dispatch(new AddTaskAction(mappingFormValue));
+    }
+  }
+
+  public closeDialog() {
+    this.dialogRef.close()
+  }
 
 }
