@@ -15,13 +15,11 @@ import {AddTaskAction} from "../../shared/store/task-action";
   styleUrl: './popup.component.scss'
 })
 export class PopupComponent implements OnInit {
-  public getTask!: Observable<TaskInterface>
+
   public form!: FormGroup;
   public status: SelectModelInterface[] = statusValue;
   public performers: SelectModelInterface[] = performers;
   public priority: SelectModelInterface[] = priority;
-
-  // @Output() createTask: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(private store: Store,
               private fb: FormBuilder,
@@ -71,19 +69,18 @@ export class PopupComponent implements OnInit {
   }
 
   public addTask(): void {
-    console.log(this.form.valid);
     if (this.form.valid) {
-      const taskID = Math.floor((Math.random() * 100));
-      console.log('taskID', taskID)
+      const taskID = Math.floor((Math.random() * 1000));
       const mappingFormValue: TaskInterface = {
-        id: +taskID,
+        id: taskID,
         ...this.form.value
       }
       this.store.dispatch(new AddTaskAction(mappingFormValue));
     }
+    this.closeDialog();
   }
 
-  public closeDialog() {
+  public closeDialog(): void {
     this.dialogRef.close()
   }
 

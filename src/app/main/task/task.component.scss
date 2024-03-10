@@ -1,35 +1,80 @@
 @import "src/app/shared/style/mixin";
+@import "src/app/shared/style/variable";
 
-.show-task-lists {
-  background-color: #252628;
+section {
+  padding: 20px;
 
-  &-block {
-    width: 270px;
-    border: 1px solid;
-    margin-bottom: 14px;
-    background-color: #2a2b2d;
-    padding: 15px;
-    border-radius: 8px;
+  .show-task-lists {
+    padding: 20px 0;
+    @include flex-row;
+    flex-direction: column;
+    gap: 10px;
 
-    &_check {
-      margin-right: 5px;
+    &-block {
+      width: 270px;
+      border: 1px solid grey;
+      background-color: #2a2b2d;
+      padding: 15px;
+      border-radius: 8px;
+
+      &:hover {
+        border: 1px solid white;
+      }
+
+      &_check {
+        margin-right: 5px;
+      }
+
+      div:nth-child(2), div:nth-child(3) {
+        @include flex-row;
+      }
+
+      &_name {
+        margin-bottom: 8px;
+        @include flex-row;
+      }
+
+      p {
+        margin-right: 5px;
+      }
+
+      &_round {
+        padding: 2px 4px;
+        border-radius: 50px;
+        font-size: 12px;
+        color: black;
+      }
+
+      &-userBlock {
+        @include flex-align-center;
+        flex-wrap: wrap;
+
+        &_usersName {
+          background: $purple;
+          font-size: 13px;
+          font-weight: 300;
+          padding: 3px 10px;
+          border-radius: 50px;
+        }
+      }
+
     }
 
-    div:nth-child(2), div:nth-child(3) {
-      @include flex-row;
-    }
-
-    p {
-      margin-right: 5px;
-    }
-    &_round{
-      padding:2px 4px;
-      border-radius: 50px;
-      font-size: 12px;
-      color: black;
-    }
   }
-
 }
 
+.add-task-bth {
+  background: black;
+  color: white;
+  border: 1px solid grey;
+  outline: none;
+  font-size: 13px;
+  padding: 6px 7px 0px 7px;
+  border-radius: 8px;
 
+  @include flex-row;
+
+  mat-icon {
+    font-size: 16px;
+  }
+}

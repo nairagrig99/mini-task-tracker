@@ -9,4 +9,9 @@
 }
 mat-form-field {
   width: 300px;
+
+  input::placeholder{
+    color: white;
+  }
 }
+

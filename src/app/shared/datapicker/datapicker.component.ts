@@ -7,12 +7,15 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
   styleUrl: './datapicker.component.scss',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DatapickerComponent),
+    useExisting: forwardRef(() => DatepickerComponent),
     multi: true
   }]
 })
-export class DatapickerComponent implements ControlValueAccessor {
+export class DatepickerComponent implements ControlValueAccessor {
 
+  public startDate!: string;
+  public endDate!: string;
+  private convertStartAndEndDate: string[] = [];
   onChange = (el?: any) => {
   };
 
@@ -27,6 +30,8 @@ export class DatapickerComponent implements ControlValueAccessor {
   }
 
   public endDateChange(event: any): void {
-    this.onChange(event.value)
+    this.convertStartAndEndDate.push(this.startDate, this.endDate)
+    this.onChange(this.convertStartAndEndDate)
+    this.convertStartAndEndDate = [];
   }
 }

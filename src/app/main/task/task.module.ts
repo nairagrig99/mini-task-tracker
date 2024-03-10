@@ -4,6 +4,7 @@ import {TaskComponent} from "./task.component";
 import {TaskItemComponent} from "./task-item/task-item.component";
 import {RouterModule, Routes} from "@angular/router";
 import {SharedModule} from "../../shared/shared.module";
+import {MatIcon} from "@angular/material/icon";
 
 const route: Routes = [
   {
@@ -18,7 +19,8 @@ const route: Routes = [
         CommonModule,
         RouterModule.forChild(route),
         NgOptimizedImage,
-        SharedModule
+        SharedModule,
+        MatIcon
     ]
 })
 

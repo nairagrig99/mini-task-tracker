@@ -5,11 +5,9 @@ import {MainComponent} from "./main.component";
 import {SharedModule} from "../shared/shared.module";
 import {PopupComponent} from "./popup/popup.component";
 import {
-  MAT_DIALOG_DATA,
   MatDialogActions,
   MatDialogContent,
-  MatDialogModule,
-  MatDialogRef
+  MatDialogModule
 } from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from '@angular/material/button'

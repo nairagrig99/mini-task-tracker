@@ -12,17 +12,19 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import {InputComponent} from "./input/input.component";
 import {SelectComponent} from "./select/select.component";
-import {DatapickerComponent} from "./datapicker/datapicker.component";
+import { DatepickerComponent} from "./datapicker/datapicker.component";
 import {MultiSelectComponent} from "./multi-select/multi-select.component";
 import {ColorDirective} from "./directives/color.directive";
+import {DatePipe} from "./pipe/date.pipe";
 
 @NgModule({
   declarations: [
     InputComponent,
     SelectComponent,
-    DatapickerComponent,
+    DatepickerComponent,
     MultiSelectComponent,
-    ColorDirective
+    ColorDirective,
+    DatePipe
   ],
   imports: [
     CommonModule,
@@ -48,9 +50,10 @@ import {ColorDirective} from "./directives/color.directive";
   exports: [
     MultiSelectComponent,
     InputComponent,
-    DatapickerComponent,
+    DatepickerComponent,
     SelectComponent,
-    ColorDirective
+    ColorDirective,
+    DatePipe
   ],
   providers: [MatDatepickerModule]
 })

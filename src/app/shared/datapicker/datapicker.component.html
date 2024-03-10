@@ -1,12 +1,14 @@
 <div class="datepicker-accessor">
-
   <div class="datepicker-accessor_label">
     <mat-label>Срок выполнения</mat-label>
   </div>
   <mat-form-field>
-    <input matInput [matDatepicker]="picker" (dateChange)="endDateChange($event)">
-    <mat-datepicker-toggle
-      matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" [(ngModel)]="startDate">
+      <input matEndDate placeholder="End date" [(ngModel)]="endDate" (dateChange)="endDateChange($event)">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
+
 </div>
