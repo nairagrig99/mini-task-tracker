@@ -1,29 +1,43 @@
 <mat-dialog-content class="mat-typography">
   <section class="create-task">
-    <div class="create-task-settings">
+    <div class="create-task-settings" [formGroup]="form">
       <div class="create-task-title">
         <app-input
           [label]="'Заголовок'"
+          [formControl]="titleControl"
+        ></app-input>
+        <app-input
+          [label]="'Название'"
+          [formControl]="nameControl"
         ></app-input>
       </div>
       <div>
-        <app-select
-          [label]="'Исполнитель'"
-        ></app-select>
+        <app-multi-select
+          [label]="'Исполнители'"
+          [optionValue]="performers"
+          [formControl]="performersControl"
+        >
+        </app-multi-select>
       </div>
 
       <div>
-        <app-datapicker></app-datapicker>
+        <app-datapicker
+          [formControl]="deadlineControl"
+        ></app-datapicker>
       </div>
       <div>
         <app-select
           [label]="'Приоритет'"
+          [optionValue]="priority"
+          [formControl]="priorityControl"
         ></app-select>
 
       </div>
       <div>
         <app-select
           [label]="'Статус'"
+          [formControl]="statusControl"
+          [optionValue]="status"
         ></app-select>
       </div>
       <div>

@@ -3,6 +3,9 @@ import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {MainComponent} from "./main.component";
 import {SharedModule} from "../shared/shared.module";
+import {PopupComponent} from "./popup/popup.component";
+import {MatDialogContent} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const route: Routes = [
   {
@@ -23,11 +26,13 @@ const route: Routes = [
 ]
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [MainComponent,PopupComponent],
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule.forChild(route)
+    RouterModule.forChild(route),
+    MatDialogContent,
+    ReactiveFormsModule
   ]
 })
 export class MainModule {

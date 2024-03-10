@@ -1,5 +1,6 @@
 import {Component, forwardRef, Input} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {SelectModelInterface} from "../interface/select-model.interface";
 
 @Component({
   selector: 'app-select',
@@ -8,19 +9,40 @@ import {NG_VALUE_ACCESSOR} from "@angular/forms";
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: () => forwardRef(() => SelectComponent),
+      useExisting: forwardRef(() => SelectComponent),
       multi: true
     }
   ]
 })
-export class SelectComponent {
-
+export class SelectComponent implements ControlValueAccessor {
   @Input() label: string = '';
-  public selectedValue!: string;
+  @Input() optionValue!: SelectModelInterface[];
+  public selectValue!: SelectModelInterface[];
 
-  foods = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  set selectedValue(value: any) {
+    this.selectValue = value;
+    this.onChange(this.selectValue)
+  }
+
+  get selectedValue() {
+    return this.selectValue;
+  }
+
+  onChange = (el?: any) => {
+  };
+
+  writeValue(value: any): void {
+    // if (value){
+    //   this.selectValue=value;
+    // }
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+  }
+
+
 }

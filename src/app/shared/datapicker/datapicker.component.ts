@@ -1,5 +1,5 @@
 import {Component, forwardRef} from '@angular/core';
-import {NG_VALUE_ACCESSOR} from "@angular/forms";
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
   selector: 'app-datapicker',
@@ -11,6 +11,22 @@ import {NG_VALUE_ACCESSOR} from "@angular/forms";
     multi: true
   }]
 })
-export class DatapickerComponent {
+export class DatapickerComponent implements ControlValueAccessor {
 
+  onChange = (el?: any) => {
+  };
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+  }
+
+  writeValue(obj: any): void {
+  }
+
+  public endDateChange(event: any): void {
+    this.onChange(event.value)
+  }
 }

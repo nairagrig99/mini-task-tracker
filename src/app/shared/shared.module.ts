@@ -1,21 +1,27 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PopupComponent} from "./popup/popup.component";
+import {PopupComponent} from "../main/popup/popup.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField, MatFormFieldModule, MatHint} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {MatOption, MatSelect} from "@angular/material/select";
-import {FormsModule} from "@angular/forms";
+import {MatOption, MatSelect, MatSelectTrigger} from "@angular/material/select";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import {InputComponent} from "./input/input.component";
 import {SelectComponent} from "./select/select.component";
 import {DatapickerComponent} from "./datapicker/datapicker.component";
+import {MultiSelectComponent} from "./multi-select/multi-select.component";
 
 @NgModule({
-  declarations: [PopupComponent, InputComponent, SelectComponent,DatapickerComponent],
+  declarations: [
+    InputComponent,
+    SelectComponent,
+    DatapickerComponent,
+    MultiSelectComponent
+  ],
   imports: [
     CommonModule,
     MatDialogClose,
@@ -33,7 +39,15 @@ import {DatapickerComponent} from "./datapicker/datapicker.component";
     MatDatepicker,
     MatDatepickerInput,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSelectTrigger
+  ],
+  exports: [
+    MultiSelectComponent,
+    InputComponent,
+    DatapickerComponent,
+    SelectComponent
   ],
   providers: [MatDatepickerModule]
 })

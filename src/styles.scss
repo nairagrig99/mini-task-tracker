@@ -10,8 +10,11 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled)  {
-  background-color: $background-color!important;
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: $background-color !important;
   border: 1px solid grey;
-  color: white;
+}
+
+mat-select-trigger, mat-select {
+  color: white !important;
 }

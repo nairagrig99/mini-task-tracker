@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {PopupComponent} from "../../shared/popup/popup.component";
+import {PopupComponent} from "../popup/popup.component";
 import {Store} from "@ngrx/store";
 import {AddTaskAction} from "../../shared/store/task-action";
 
