@@ -16,25 +16,18 @@ export const initialState = adapter.getInitialState({
 export function taskReducer
 (state: EntityState<TaskInterface> = initialState,
  action: TaskAction) {
-  console.log('action.type', action.type)
+
   switch (action.type) {
 
-    // case AddTask.GetAllTask: {
-    //   return {
-    //     ...state
-    //   }
-    // }
-
     case AddTask.AddTask:
-      console.log('actionpayloaddddddddd', action.payload)
       return adapter.addOne(action.payload, state)
 
-    // case AddTask.UpdateTask: {
-    //   return {
-    //     ...state,
-    //     task: action.payload
-    //   }
-    // }
+    case AddTask.UpdateTask:
+      return adapter.updateOne({
+        id: action.payload.id,
+        changes: action.payload
+      }, {...state});
+
     // case AddTask.RemoveTask: {
     //   return {
     //     ...state,

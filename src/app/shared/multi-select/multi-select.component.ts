@@ -8,6 +8,7 @@ import {
   NgControl
 } from "@angular/forms";
 import {SelectModelInterface} from "../interface/select-model.interface";
+import {performers} from "../select-value/default-value";
 
 @Component({
   selector: 'app-multi-select',
@@ -24,13 +25,15 @@ import {SelectModelInterface} from "../interface/select-model.interface";
 export class MultiSelectComponent implements ControlValueAccessor, OnInit {
 
   @Input() label: string = '';
+  @Input() placeholder: string = '';
   @Input() optionValue!: SelectModelInterface[];
 
   @Output() selectedValue: EventEmitter<any> = new EventEmitter<any>();
 
-  private formControl!: FormControl;
+  public formControl!: FormControl;
 
   public model!: string;
+  private performers: SelectModelInterface[] = performers;
 
   constructor(private inj: Injector) {
 
@@ -56,10 +59,8 @@ export class MultiSelectComponent implements ControlValueAccessor, OnInit {
   registerOnTouched(fn: any): void {
   }
 
-  writeValue(value: any): void {
-    // if (value) {
-    //   this.optionValue = value;
-    // }
+  writeValue(performers: any): void {
+
   }
 
   get value(): string {
@@ -69,6 +70,7 @@ export class MultiSelectComponent implements ControlValueAccessor, OnInit {
   set value(values: string) {
     this.model = values;
     this.onChange(this.model)
+
   }
 
 

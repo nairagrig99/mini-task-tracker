@@ -1,0 +1,44 @@
+@import "src/app/shared/style/variable";
+@import "src/app/shared/style/mixin";
+
+.btn-block {
+  @include flex-row;
+  gap: 25px;
+
+  &-task-edit-btn {
+    @include button;
+    margin-bottom: 15px;
+
+    mat-icon {
+      font-size: 16px;
+    }
+  }
+
+  &-task-edit-btn-remove {
+    @include button-remove;
+
+    margin-bottom: 15px;
+
+    mat-icon {
+      font-size: 16px;
+    }
+  }
+}
+
+
+table {
+  width: 100%;
+  background-color: $background-color;
+
+  th {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  th, td {
+    color: white;
+
+  }
+}
+
+

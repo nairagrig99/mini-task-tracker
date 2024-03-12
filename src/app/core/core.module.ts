@@ -7,21 +7,23 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {MatInputModule} from '@angular/material/input';
+import {RouterLink} from "@angular/router";
 
 @NgModule({
   declarations: [MainNavComponent],
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    NgOptimizedImage,
-    MatIcon,
-    MatInputModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule
-  ],
+    imports: [
+        CommonModule,
+        MatToolbarModule,
+        NgOptimizedImage,
+        MatIcon,
+        MatInputModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatListModule,
+        RouterLink
+    ],
   exports: [MainNavComponent]
 })
 export class CoreModule {

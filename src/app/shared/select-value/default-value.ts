@@ -18,3 +18,11 @@ export const priority: SelectModelInterface[] = [
   {value: 'Средний', viewValue: 'Средний'},
   {value: 'Высокий', viewValue: 'Высокий'}
 ];
+
+export const sortTask: SelectModelInterface[] = [
+  {value: 'Статус', viewValue: 'Статус'},
+  {value: 'Исполнитель', viewValue: 'Исполнитель'},
+  {value: 'Деадлине', viewValue: 'Деадлине'}
+];
+
+export const displayedColumns: string[] = ['title', 'name', 'deadline', 'status', 'priority', 'performers'];

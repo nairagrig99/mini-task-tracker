@@ -26,6 +26,7 @@
       <div>
         <app-datapicker
           [formControl]="deadlineControl"
+          [label]="'Срок выполнения'"
         ></app-datapicker>
       </div>
       <div>
@@ -49,7 +50,12 @@
 
   </section>
   <mat-dialog-actions>
-    <button mat-raised-button (click)="addTask()">Создать Задачу</button>
+    @if (data?.edit) {
+      <button mat-raised-button (click)="updateTask()">Редактировать Задачу</button>
+    } @else {
+      <button mat-raised-button (click)="addTask()">Создать Задачу</button>
+    }
+
   </mat-dialog-actions>
 </mat-dialog-content>
 

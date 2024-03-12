@@ -37,5 +37,6 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   writeValue(obj: any): void {
+    this.inputValue = obj;
   }
 }

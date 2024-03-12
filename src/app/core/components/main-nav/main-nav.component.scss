@@ -2,6 +2,7 @@
 @import "src/app/shared/style/mixin";
 
 .toolbar {
+
   &_leftSight {
     @include flex-align-center;
   }

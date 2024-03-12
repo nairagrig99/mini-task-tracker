@@ -1,17 +1,23 @@
 <div class="multi-selector-accessor">
-  <div class="multi-selector-accessor_label">
-    <mat-label>{{ label }}</mat-label>
-  </div>
+  @if (label !== '') {
+    <div class="multi-selector-accessor_label">
+      <mat-label>{{ label }}</mat-label>
+    </div>
+  }
+
   <mat-form-field>
 
-    <mat-select  multiple  [(ngModel)]="value" >
-      <mat-select-trigger>
-        @for (topping of value; track topping) {
+    <mat-select multiple
+                [placeholder]="placeholder"
+                [formControl]="formControl"
+    >
+      <mat-select-trigger >
+        @for (topping of formControl.value; track topping) {
           {{ topping || '' }}
         }
       </mat-select-trigger>
       @for (topping of optionValue; track topping) {
-        <mat-option  [value]="topping?.value" >{{ topping?.value }}</mat-option>
+        <mat-option [value]="topping?.value">{{ topping?.value }}</mat-option>
       }
     </mat-select>
   </mat-form-field>

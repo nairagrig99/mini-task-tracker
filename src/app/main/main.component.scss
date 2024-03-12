@@ -1,5 +1,7 @@
 @import 'src/app/shared/style/mixin';
-
+main {
+  padding: 20px 20px 50px 20px;
+}
 .project {
   @include flex-align-center;
   background-color: #1e1f21;

@@ -5,6 +5,8 @@ import {Store} from "@ngrx/store";
 import {getTaskListEntities} from "../../shared/store/task-store";
 import {Observable} from "rxjs";
 import {TaskInterface} from "../../shared/interface/task-interface";
+import {Router} from "@angular/router";
+import {TaskListApiService} from "../../shared/services/task-list-api.service";
 
 @Component({
   selector: 'app-task',
@@ -13,28 +15,22 @@ import {TaskInterface} from "../../shared/interface/task-interface";
 })
 export class TaskComponent implements OnInit {
 
-  // @ts-ignore
-  public taskList: Observable<TaskInterface[]> = this.store.select(getTaskListEntities);
+  public taskList$!: Observable<TaskInterface[]>;
 
-  constructor(public dialog: MatDialog, private store: Store) {
+  constructor(public dialog: MatDialog,
+              private route: Router,
+              private taskApiServices: TaskListApiService) {
   }
 
   ngOnInit(): void {
-    this.taskList.subscribe((s) => {
-      console.log(s)
-    })
+    this.taskList$ = this.taskApiServices.getTasksList()
   }
 
-  public openDialog() {
-    const dialogRef = this.dialog.open(PopupComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result?.data);
-      console.log(result);
-    });
+  public openDialog(): void {
+    this.dialog.open(PopupComponent);
   }
 
-  public addTask(value: any) {
-
+  public openTask(id: number): void {
+    this.route.navigate([`main/item/${id}`])
   }
 }

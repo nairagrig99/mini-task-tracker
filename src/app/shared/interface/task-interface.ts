@@ -2,7 +2,7 @@ export interface TaskInterface {
   id: number;
   title: string;
   name: string;
-  deadline: [];
+  deadline:[];
   status: string;
   priority: string;
   performers: string[]

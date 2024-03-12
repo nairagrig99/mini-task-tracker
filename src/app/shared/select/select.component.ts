@@ -1,4 +1,4 @@
-import {Component, forwardRef, Input} from '@angular/core';
+import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {SelectModelInterface} from "../interface/select-model.interface";
 
@@ -16,6 +16,7 @@ import {SelectModelInterface} from "../interface/select-model.interface";
 })
 export class SelectComponent implements ControlValueAccessor {
   @Input() label: string = '';
+  @Input() placeholder: string = '';
   @Input() optionValue!: SelectModelInterface[];
   public selectValue!: SelectModelInterface[];
 
@@ -32,13 +33,14 @@ export class SelectComponent implements ControlValueAccessor {
   };
 
   writeValue(value: any): void {
-    // if (value){
-    //   this.selectValue=value;
-    // }
+    if (value) {
+      this.selectValue = value;
+    }
   }
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
+
   }
 
   registerOnTouched(fn: any): void {

@@ -2,8 +2,6 @@
 @import "src/app/shared/style/variable";
 
 section {
-  padding: 20px;
-
   .show-task-lists {
     padding: 20px 0;
     @include flex-row;
@@ -27,6 +25,7 @@ section {
 
       div:nth-child(2), div:nth-child(3) {
         @include flex-row;
+        gap: 8px;
       }
 
       &_name {
@@ -35,7 +34,7 @@ section {
       }
 
       p {
-        margin-right: 5px;
+        gap: 8px;
       }
 
       &_round {
@@ -48,6 +47,7 @@ section {
       &-userBlock {
         @include flex-align-center;
         flex-wrap: wrap;
+        gap: 5px;
 
         &_usersName {
           background: $purple;
@@ -57,22 +57,12 @@ section {
           border-radius: 50px;
         }
       }
-
     }
-
   }
 }
 
 .add-task-bth {
-  background: black;
-  color: white;
-  border: 1px solid grey;
-  outline: none;
-  font-size: 13px;
-  padding: 6px 7px 0px 7px;
-  border-radius: 8px;
-
-  @include flex-row;
+  @include button;
 
   mat-icon {
     font-size: 16px;

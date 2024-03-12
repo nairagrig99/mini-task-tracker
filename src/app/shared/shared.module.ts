@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {PopupComponent} from "../main/popup/popup.component";
 import {MatDialogActions, MatDialogClose, MatDialogContent} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField, MatFormFieldModule, MatHint} from "@angular/material/form-field";
@@ -12,10 +11,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from "@angular/material/core";
 import {InputComponent} from "./input/input.component";
 import {SelectComponent} from "./select/select.component";
-import { DatepickerComponent} from "./datapicker/datapicker.component";
+import {DatepickerComponent} from "./datapicker/datapicker.component";
 import {MultiSelectComponent} from "./multi-select/multi-select.component";
 import {ColorDirective} from "./directives/color.directive";
 import {DatePipe} from "./pipe/date.pipe";
+import {FilterComponent} from "./filter/filter.component";
+import {SortComponent} from "./sort/sort.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {DatePipe} from "./pipe/date.pipe";
     DatepickerComponent,
     MultiSelectComponent,
     ColorDirective,
-    DatePipe
+    DatePipe,
+    FilterComponent,
+    SortComponent
   ],
   imports: [
     CommonModule,
@@ -53,7 +56,9 @@ import {DatePipe} from "./pipe/date.pipe";
     DatepickerComponent,
     SelectComponent,
     ColorDirective,
-    DatePipe
+    DatePipe,
+    FilterComponent,
+    SortComponent
   ],
   providers: [MatDatepickerModule]
 })

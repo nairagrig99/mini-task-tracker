@@ -1,5 +1,6 @@
 import {Action} from "@ngrx/store";
 import {TaskInterface} from "../interface/task-interface";
+import {Update} from "@ngrx/entity";
 
 export enum AddTask {
   GetAllTask = '[Get Task] GetAllTask',
@@ -16,22 +17,20 @@ export class AddTaskAction implements Action {
   readonly type = AddTask.AddTask;
 
   constructor(public payload: TaskInterface) {
-    console.log('payload in action', payload)
   }
 }
 
 export class UpdateTaskAction implements Action {
   readonly type = AddTask.UpdateTask;
 
-  constructor(public payload: number) {
+  constructor(public payload:TaskInterface) {
   }
 }
 
 export class RemoveTaskAction implements Action {
   readonly type = AddTask.RemoveTask;
 
-  constructor(public payload: string) {
-  }
+  constructor(public payload: string) {}
 }
 
 export type TaskAction = AddTaskAction

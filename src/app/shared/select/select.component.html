@@ -1,9 +1,11 @@
 <div class="select-accessor">
-  <div class="select-accessor_label">
-    <mat-label>{{label}}</mat-label>
-  </div>
+  @if (label !== '') {
+    <div class="select-accessor_label">
+      <mat-label>{{ label }}</mat-label>
+    </div>
+  }
   <mat-form-field>
-    <mat-select [(ngModel)]="selectedValue" name="food">
+    <mat-select [(ngModel)]="selectedValue" [placeholder]="placeholder" name="food">
       @for (food of optionValue; track food) {
         <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
       }

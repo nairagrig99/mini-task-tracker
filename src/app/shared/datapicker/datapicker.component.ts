@@ -1,4 +1,4 @@
-import {Component, forwardRef} from '@angular/core';
+import {Component, forwardRef, Input} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 
 @Component({
@@ -12,6 +12,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
   }]
 })
 export class DatepickerComponent implements ControlValueAccessor {
+  @Input() placeholder: string = '';
+  @Input() label: string = '';
+
 
   public startDate!: string;
   public endDate!: string;
@@ -26,10 +29,14 @@ export class DatepickerComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
   }
 
-  writeValue(obj: any): void {
+  writeValue(dates: string[]): void {
+    if (dates?.length > 0) {
+      this.startDate = dates[0]
+      this.endDate = dates[1]
+    }
   }
 
-  public endDateChange(event: any): void {
+  public endDateChange(): void {
     this.convertStartAndEndDate.push(this.startDate, this.endDate)
     this.onChange(this.convertStartAndEndDate)
     this.convertStartAndEndDate = [];

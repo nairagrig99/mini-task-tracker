@@ -32,12 +32,12 @@
           <ul>
             <li>
               <img ngSrc="assets/svg/home.svg" width="18" height="18" alt="">
-              <a href="">Главная</a>
+              <a routerLink="main/create-task">Главная</a>
             </li>
 
             <li>
               <img ngSrc="assets/svg/check.svg" width="18" height="18" alt="">
-              <a href="">My Tasks</a>
+              <a routerLink="main/all-task">My Tasks</a>
             </li>
           </ul>
         </nav>
@@ -53,7 +53,8 @@
           @if (visible) {
             <div class="sidenav-container_project-block">
               <div class="sidenav-container_project-block_status"></div>
-              <span class="sidenav-container_project-block_name">Test Asana</span>
+              <span class="sidenav-container_project-block_name"
+                    routerLink="main/create-task">Test Asana</span>
             </div>
           }
         </div>

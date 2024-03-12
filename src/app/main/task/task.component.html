@@ -4,8 +4,8 @@
     Добавить задачу
   </button>
   <div class="show-task-lists">
-    @for (task of taskList | async; track task) {
-      <div class="show-task-lists-block">
+    @for (task of taskList$ | async; track task) {
+      <div class="show-task-lists-block" (click)="openTask(task.id)">
         <div class="show-task-lists-block_name">
           <img
             class="show-task-lists-block_check"

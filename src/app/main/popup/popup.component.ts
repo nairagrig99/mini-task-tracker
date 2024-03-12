@@ -3,11 +3,12 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {TaskInterface} from "../../shared/interface/task-interface";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {performers, priority, statusValue} from "../../shared/select-value/default-select-value";
+import {performers, priority, statusValue} from "../../shared/select-value/default-value";
 import {SelectModelInterface} from "../../shared/interface/select-model.interface";
 
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {AddTaskAction} from "../../shared/store/task-action";
+import {AddTaskAction, UpdateTaskAction} from "../../shared/store/task-action";
+import {Update} from "@ngrx/entity";
 
 @Component({
   selector: 'app-popup',
@@ -24,8 +25,7 @@ export class PopupComponent implements OnInit {
   constructor(private store: Store,
               private fb: FormBuilder,
               private dialogRef: MatDialogRef<PopupComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: any) {
-
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   public get titleControl(): FormControl {
@@ -53,19 +53,36 @@ export class PopupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.getTask = this.store.select(getTasksList);
     this.initForm();
+    this.getEditTaskData();
   }
 
   private initForm(): void {
+
     this.form = this.fb.group({
       title: [null, [Validators.required, Validators.min(3)]],
-      name: [null, [Validators.required, Validators.min(3)]],
-      performers: [null, Validators.required],
-      deadline: [null, Validators.required],
-      status: [null, Validators.required],
-      priority: [null, Validators.required]
+      name: [null],
+      performers: [null],
+      deadline: [null],
+      status: [null],
+      priority: [null]
     })
+  }
+
+
+  public closeDialog(): void {
+    this.dialogRef.close()
+  }
+
+  private getEditTaskData(): void {
+    if (!!this.data) {
+      this.titleControl.setValue(this.data.editTask.title);
+      this.nameControl.setValue(this.data.editTask.name);
+      this.performersControl.setValue(this.data.editTask.performers)
+      this.statusControl.setValue(this.data.editTask.status)
+      this.priorityControl.setValue(this.data.editTask.priority)
+      this.deadlineControl.setValue(this.data.editTask.deadline)
+    }
   }
 
   public addTask(): void {
@@ -76,12 +93,22 @@ export class PopupComponent implements OnInit {
         ...this.form.value
       }
       this.store.dispatch(new AddTaskAction(mappingFormValue));
+      this.closeDialog();
     }
-    this.closeDialog();
+
   }
 
-  public closeDialog(): void {
-    this.dialogRef.close()
+  public updateTask(): void {
+    if (this.form.valid) {
+      const mappingFormValue: TaskInterface = {
+        id: this.data.editTask.id,
+        ...this.form.value
+      }
+      this.store.dispatch(new UpdateTaskAction(mappingFormValue))
+      this.dialogRef.close();
+    }
+
+
   }
 
 }
