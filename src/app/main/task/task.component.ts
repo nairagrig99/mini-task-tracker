@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {PopupComponent} from "../popup/popup.component";
-import {Store} from "@ngrx/store";
-import {getTaskListEntities} from "../../shared/store/task-store";
 import {Observable} from "rxjs";
 import {TaskInterface} from "../../shared/interface/task-interface";
 import {Router} from "@angular/router";

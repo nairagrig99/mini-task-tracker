@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {getTaskListEntities} from "../../../shared/store/task-store";
 import {map} from "rxjs";
 import {TaskInterface} from "../../../shared/interface/task-interface";
 import {displayedColumns} from "../../../shared/select-value/default-value";
 import {PopupComponent} from "../../popup/popup.component";
 import {MatDialog} from "@angular/material/dialog";
+import {TaskListApiService} from "../../../shared/services/task-list-api.service";
 
 @Component({
   selector: 'app-task-item',
@@ -21,6 +21,7 @@ export class TaskItemComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private dialog: MatDialog,
+              private taskListService: TaskListApiService,
               private store: Store) {
     this.route.params.subscribe(params => this.paramId = params['id']);
   }
@@ -30,13 +31,12 @@ export class TaskItemComponent implements OnInit {
   }
 
   private getTask(): void {
-    // @ts-ignore
-    this.store.select(getTaskListEntities).pipe(map((task: TaskInterface[]) =>
+    this.taskListService.getTasksList().pipe(map((task: TaskInterface[]) =>
       task.filter((taskItem: TaskInterface) => taskItem.id === +this.paramId))
     ).subscribe((task) => this.taskList = task)
   }
 
-  public editTask() {
+  public editTask(): void {
     this.dialog.open(PopupComponent, {
       width: '700px',
       height: '100%',
@@ -46,4 +46,5 @@ export class TaskItemComponent implements OnInit {
       }
     });
   }
+
 }

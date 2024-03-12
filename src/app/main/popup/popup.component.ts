@@ -107,8 +107,6 @@ export class PopupComponent implements OnInit {
       this.store.dispatch(new UpdateTaskAction(mappingFormValue))
       this.dialogRef.close();
     }
-
-
   }
 
 }
