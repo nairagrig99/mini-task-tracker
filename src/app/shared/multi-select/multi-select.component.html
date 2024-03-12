@@ -1,0 +1,24 @@
+<div class="multi-selector-accessor">
+  @if (label !== '') {
+    <div class="multi-selector-accessor_label">
+      <mat-label>{{ label }}</mat-label>
+    </div>
+  }
+
+  <mat-form-field>
+
+    <mat-select multiple
+                [placeholder]="placeholder"
+                [formControl]="formControl"
+    >
+      <mat-select-trigger >
+        @for (topping of formControl.value; track topping) {
+          {{ topping || '' }}
+        }
+      </mat-select-trigger>
+      @for (topping of optionValue; track topping) {
+        <mat-option [value]="topping?.value">{{ topping?.value }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</div>

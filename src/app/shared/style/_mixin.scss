@@ -1,3 +1,5 @@
+@import "src/app/shared/style/variable";
+
 @mixin flex-row {
   display: flex;
 }
@@ -12,3 +14,18 @@
   justify-content: $contentPosition;
 }
 
+@mixin button {
+  @include flex-row;
+  background: black;
+  color: white;
+  border: 1px solid grey;
+  outline: none;
+  font-size: 13px;
+  padding: 8px 7px 0px 7px;
+  border-radius: 8px;
+}
+
+@mixin button-remove {
+  @include button;
+  background-color: $red !important;
+}

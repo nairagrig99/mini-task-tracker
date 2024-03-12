@@ -1,0 +1,17 @@
+<div class="datepicker-accessor">
+  @if (label !== '') {
+    <div class="datepicker-accessor_label">
+      <mat-label>{{ label }}</mat-label>
+    </div>
+  }
+  <mat-form-field>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate [placeholder]="placeholder" [(ngModel)]="startDate">
+      <input matEndDate [(ngModel)]="endDate" (dateChange)="endDateChange()">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+
+  </mat-form-field>
+
+</div>

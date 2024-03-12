@@ -1,0 +1,8 @@
+@import 'src/app/shared/style/mixin';
+
+
+.filter {
+  @include flex-align-center;
+
+  gap: 15px;
+}

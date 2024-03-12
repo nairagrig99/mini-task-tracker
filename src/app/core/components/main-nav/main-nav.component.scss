@@ -2,6 +2,7 @@
 @import "src/app/shared/style/mixin";
 
 .toolbar {
+
   &_leftSight {
     @include flex-align-center;
   }
@@ -154,14 +155,19 @@ h1.app-name {
   flex: 1 0 auto;
 }
 
+mat-sidenav-content {
+  background-color: #252628;
+}
+
 mat-sidenav-container, mat-sidenav, mat-nav-list {
   background-color: $background-color;
   color: white;
 }
 
+
 mat-sidenav {
   width: 273px;
-  left: -27px;
+
 }
 
 .left, .down {

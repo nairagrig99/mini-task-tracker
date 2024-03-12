@@ -1,0 +1,17 @@
+@import "src/app/shared/style/mixin";
+
+.datepicker-accessor {
+  @include flex-align-center;
+
+  &_label {
+    width: 150px;
+  }
+}
+mat-form-field {
+  width: 300px;
+
+  input::placeholder{
+    color: white;
+  }
+}
+

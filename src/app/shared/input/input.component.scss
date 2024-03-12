@@ -1,0 +1,19 @@
+@import "src/app/shared/style/mixin";
+
+.input-accessor {
+  @include flex-align-center;
+
+  &_label {
+    width: 150px;
+  }
+
+  input {
+    color: white;
+  }
+}
+
+mat-form-field {
+  width: 300px;
+}
+
+

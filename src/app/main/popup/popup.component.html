@@ -1,0 +1,63 @@
+<mat-dialog-content class="mat-typography">
+  <mat-dialog-actions align="end">
+    <mat-icon (click)="closeDialog()">close</mat-icon>
+  </mat-dialog-actions>
+  <section class="create-task">
+    <div class="create-task-settings" [formGroup]="form">
+      <div class="create-task-title">
+        <app-input
+          [label]="'Заголовок'"
+          [formControl]="titleControl"
+        ></app-input>
+        <app-input
+          [label]="'Название'"
+          [formControl]="nameControl"
+        ></app-input>
+      </div>
+      <div>
+        <app-multi-select
+          [label]="'Исполнители'"
+          [optionValue]="performers"
+          [formControl]="performersControl"
+        >
+        </app-multi-select>
+      </div>
+
+      <div>
+        <app-datapicker
+          [formControl]="deadlineControl"
+          [label]="'Срок выполнения'"
+        ></app-datapicker>
+      </div>
+      <div>
+        <app-select
+          [label]="'Приоритет'"
+          [optionValue]="priority"
+          [formControl]="priorityControl"
+        ></app-select>
+
+      </div>
+      <div>
+        <app-select
+          [label]="'Статус'"
+          [formControl]="statusControl"
+          [optionValue]="status"
+        ></app-select>
+      </div>
+      <div>
+      </div>
+    </div>
+
+  </section>
+  <mat-dialog-actions>
+    @if (data?.edit) {
+      <button mat-raised-button (click)="updateTask()">Редактировать Задачу</button>
+    } @else {
+      <button mat-raised-button (click)="addTask()">Создать Задачу</button>
+    }
+
+  </mat-dialog-actions>
+</mat-dialog-content>
+
+
+

@@ -28,21 +28,17 @@
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-
         <nav>
           <ul>
             <li>
               <img ngSrc="assets/svg/home.svg" width="18" height="18" alt="">
-              <a href="">Главная</a>
+              <a routerLink="main/create-task">Главная</a>
             </li>
 
             <li>
               <img ngSrc="assets/svg/check.svg" width="18" height="18" alt="">
-              <a href="">My Tasks</a>
+              <a routerLink="main/all-task">My Tasks</a>
             </li>
-            <li>
-              <img ngSrc="assets/svg/notification.svg" width="15" height="15" alt="">
-              <a href="">Входящие</a></li>
           </ul>
         </nav>
 
@@ -57,7 +53,8 @@
           @if (visible) {
             <div class="sidenav-container_project-block">
               <div class="sidenav-container_project-block_status"></div>
-              <span class="sidenav-container_project-block_name">Test Asana</span>
+              <span class="sidenav-container_project-block_name"
+                    routerLink="main/create-task">Test Asana</span>
             </div>
           }
         </div>

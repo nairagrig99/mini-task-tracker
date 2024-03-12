@@ -1,12 +1,10 @@
 import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 
-
-/** @title Responsive sidenav */
 @Component({
   selector: 'app-main-nav',
   templateUrl: 'main-nav.component.html',
-  styleUrl: 'main-nav.component.scss',
+  styleUrl: 'main-nav.component.scss'
 })
 export class MainNavComponent implements OnDestroy {
   mobileQuery: MediaQueryList;
