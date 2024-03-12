@@ -38,9 +38,11 @@ export class TaskItemComponent implements OnInit {
 
   public editTask() {
     this.dialog.open(PopupComponent, {
+      width: '700px',
+      height: '100%',
       data: {
         editTask: this.taskList[0],
-        edit: true
+        edit: true,
       }
     });
   }

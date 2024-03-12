@@ -22,5 +22,14 @@ mat-select,
 }
 
 .mat-mdc-select-placeholder {
-  color: white!important;
+  color: white !important;
+}
+
+.mat-mdc-dialog-content {
+  max-height: 80%!important;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface{
+background: none!important;
+  box-shadow: none!important;
 }

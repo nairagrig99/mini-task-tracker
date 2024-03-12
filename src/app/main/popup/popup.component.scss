@@ -3,6 +3,8 @@
 
 .mat-typography {
   background-color: $background-color;
+  position: relative;
+  top: 100px;
 
   mat-icon {
     color: white;

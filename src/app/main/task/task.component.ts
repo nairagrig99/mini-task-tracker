@@ -27,7 +27,10 @@ export class TaskComponent implements OnInit {
   }
 
   public openDialog(): void {
-    this.dialog.open(PopupComponent);
+    this.dialog.open(PopupComponent, {
+      width: '700px',
+      height: '100%'
+    });
   }
 
   public openTask(id: number): void {
