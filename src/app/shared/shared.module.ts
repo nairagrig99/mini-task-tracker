@@ -17,6 +17,7 @@ import {ColorDirective} from "./directives/color.directive";
 import {DatePipe} from "./pipe/date.pipe";
 import {FilterComponent} from "./filter/filter.component";
 import {SortComponent} from "./sort/sort.component";
+import {GroupByComponent} from "./group-by/group-by.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {SortComponent} from "./sort/sort.component";
     ColorDirective,
     DatePipe,
     FilterComponent,
-    SortComponent
+    SortComponent,
+    GroupByComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import {SortComponent} from "./sort/sort.component";
     ColorDirective,
     DatePipe,
     FilterComponent,
-    SortComponent
+    SortComponent,
+    GroupByComponent
   ],
   providers: [MatDatepickerModule]
 })

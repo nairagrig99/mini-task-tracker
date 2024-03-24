@@ -3,14 +3,17 @@
     <h4>Фильтрация</h4>
     <app-filter
       (changeFilter)="filterTaskList($event)"
+      [taskList$]="taskList$"
     ></app-filter>
   </div>
   <div>
     <h4>Сортировка</h4>
     <app-sort
       (sortValue)="filterTaskList($event)"
+      [taskList$]="taskList$"
     ></app-sort>
   </div>
+  <app-group-by></app-group-by>
   <div class="show-task-lists">
     @for (task of taskList$ | async; track task) {
       <div class="show-task-lists-block" (click)="openTask(task.id)">
