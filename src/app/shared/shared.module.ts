@@ -19,6 +19,7 @@ import {FilterComponent} from "./filter/filter.component";
 import {SortComponent} from "./sort/sort.component";
 import {GroupByComponent} from "./group-by/group-by.component";
 import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
+import {ConvertTitlePipe} from "./pipe/convert-title.pipe";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
     MultiSelectComponent,
     ColorDirective,
     DatePipe,
+    ConvertTitlePipe,
     FilterComponent,
     SortComponent,
     GroupByComponent,
@@ -61,6 +63,7 @@ import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
     SelectComponent,
     ColorDirective,
     DatePipe,
+    ConvertTitlePipe,
     FilterComponent,
     SortComponent,
     GroupByComponent,

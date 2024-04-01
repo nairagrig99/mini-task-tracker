@@ -47,6 +47,9 @@ export class GroupByComponent extends Unsubscriber implements OnInit, OnDestroy 
   ngOnInit(): void {
     this.initForm();
     this.groupTaskList();
+    const getter = <T>(d: T): T => d;
+    console.log(getter(10));
+    console.log(getter('test')[1]);
   }
 
   private groupTaskList(): void {
