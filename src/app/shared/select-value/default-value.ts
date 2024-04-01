@@ -25,4 +25,9 @@ export const sortTask: SelectModelInterface[] = [
   {value: 'Деадлине', viewValue: 'Деадлине'}
 ];
 
+export const groupBy: SelectModelInterface[] = [
+  {value: 'status', viewValue: 'Статус'},
+  {value: 'priority', viewValue: 'Приоритет'},
+];
+
 export const displayedColumns: string[] = ['title', 'name', 'deadline', 'status', 'priority', 'performers'];

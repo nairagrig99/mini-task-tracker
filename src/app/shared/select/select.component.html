@@ -5,7 +5,9 @@
     </div>
   }
   <mat-form-field>
-    <mat-select [(ngModel)]="selectedValue" [placeholder]="placeholder" name="food">
+    <mat-select [(ngModel)]="selectedValue"
+                [placeholder]="placeholder"
+                name="food">
       @for (food of optionValue; track food) {
         <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
       }

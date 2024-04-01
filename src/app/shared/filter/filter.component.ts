@@ -1,11 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {SelectModelInterface} from "../interface/select-model.interface";
 import {performers, statusValue} from "../select-value/default-value";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
-
 import {TaskInterface} from "../interface/task-interface";
-import {TaskListApiService} from "../services/task-list-api.service";
-import {combineLatest, map, Observable} from "rxjs";
+import {combineLatest, map, Observable, takeUntil} from "rxjs";
+import {Unsubscriber} from "../../core/unsubscrib/unsubscriber";
 
 @Component({
   selector: 'app-filter',
@@ -13,20 +12,20 @@ import {combineLatest, map, Observable} from "rxjs";
   styleUrl: './filter.component.scss',
 
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent extends Unsubscriber implements OnInit, OnDestroy {
+
+  @Input() taskList$!: Observable<TaskInterface[]>
+  @Output() changeFilter: EventEmitter<TaskInterface[]> = new EventEmitter<TaskInterface[]>()
 
   public status: SelectModelInterface[] = statusValue;
   public performers: SelectModelInterface[] = performers;
-  public taskList$!: Observable<TaskInterface[]>;
   public form!: FormGroup;
-  @Output() changeFilter: EventEmitter<TaskInterface[]> = new EventEmitter<TaskInterface[]>()
 
-  constructor(private formBuilder: FormBuilder,
-              private taskApiServices: TaskListApiService) {
+  constructor(private formBuilder: FormBuilder) {
+    super();
   }
 
   ngOnInit(): void {
-    this.taskList$ = this.taskApiServices.getTasksList();
     this.initForm();
     this.filterDuringFormChanges();
 
@@ -54,10 +53,10 @@ export class FilterComponent implements OnInit {
 
   public filterDuringFormChanges(): void {
     combineLatest([this.form.valueChanges, this.taskList$])
-      .pipe(map(([form, taskList]) => {
-
-        return taskList.filter((task) =>
-          // @ts-ignore
+      .pipe(
+        map(([form, taskList]) => {
+          return taskList.filter((task) =>
+            // @ts-ignore
             !this.isNull(task.deadline) && !this.isNull(task.performers) && !this.isNull(task.status))
             .filter((taskItem) => {
               const statusAndPerformers = form.status === taskItem.status && taskItem.performers?.some((performers) => performers === form.performers)
@@ -81,9 +80,9 @@ export class FilterComponent implements OnInit {
 
               return []
             })
-        })
-      )
-      .subscribe((form) => this.changeFilter.emit(form))
+        }),
+        takeUntil(this.ngUnsubscribe)
+      ).subscribe((filterTaskList) => this.changeFilter.emit(filterTaskList))
   }
 
   private isEqualDate(form: any, taskItem: any): boolean {
@@ -94,4 +93,7 @@ export class FilterComponent implements OnInit {
     return value === null;
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe();
+  }
 }

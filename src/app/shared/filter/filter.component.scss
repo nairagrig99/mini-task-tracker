@@ -2,7 +2,12 @@
 
 
 .filter {
-  @include flex-align-center;
-
+  @include flex-row;
+  flex-direction: column;
   gap: 15px;
+
+  &_select {
+    @include flex-row;
+    gap: 15px;
+  }
 }

@@ -1,0 +1,26 @@
+<div class="show-task-lists-block" (click)="openTask(taskItem.id)">
+  <div class="show-task-lists-block_name">
+    <img
+      class="show-task-lists-block_check"
+      width="16"
+      height="16"
+      ngSrc="assets/svg/check.svg" alt="">
+    <span>{{ taskItem.title }}</span>
+  </div>
+  <div>
+    <p class="show-task-lists-block_round"
+       [backgroundColor]="{'status':taskItem.status}">{{ taskItem.status }}</p>
+    <p class="show-task-lists-block_round"
+       [backgroundColor]="{'priority':taskItem.priority}">{{ taskItem.priority }}</p>
+  </div>
+  <div class="show-task-lists-block-userBlock">
+    <div class="show-task-lists-block-userBlock">
+      @for (users of taskItem.performers; track users) {
+        <p class="show-task-lists-block-userBlock_usersName">{{ users | slice:0:1 }}</p>
+      }
+    </div>
+    <div>
+      <p>{{ taskItem.deadline | datePipe }}</p>
+    </div>
+  </div>
+</div>

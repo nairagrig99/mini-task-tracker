@@ -1,18 +1,21 @@
 <section class="filter">
-  <app-select
-    [formControl]="statusControl"
-    [placeholder]="'Статус'"
-    [optionValue]="status"
-  >
-  </app-select>
-  <app-select
-    [formControl]="performersControl"
-    [placeholder]="'Исполнители'"
-    [optionValue]="performers"
-  >
-  </app-select>
-  <app-datapicker
-    [formControl]="deadlineControl"
-    [placeholder]="'Срок выполнения'">
-  </app-datapicker>
+  <h4>Фильтрация</h4>
+  <div class="filter_select">
+    <app-select
+      [formControl]="statusControl"
+      [placeholder]="'Статус'"
+      [optionValue]="status"
+    >
+    </app-select>
+    <app-select
+      [formControl]="performersControl"
+      [placeholder]="'Исполнители'"
+      [optionValue]="performers"
+    >
+    </app-select>
+    <app-datapicker
+      [formControl]="deadlineControl"
+      [placeholder]="'Срок выполнения'">
+    </app-datapicker>
+  </div>
 </section>
