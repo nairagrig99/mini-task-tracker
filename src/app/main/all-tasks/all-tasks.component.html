@@ -1,47 +1,44 @@
-<section>
+<section class="all-task-filter">
   <div>
-    <h4>Фильтрация</h4>
     <app-filter
       (changeFilter)="filterTaskList($event)"
       [taskList$]="taskList$"
     ></app-filter>
   </div>
-  <div>
-    <h4>Сортировка</h4>
+
+  <div class="all-task-filter_group">
     <app-sort
       (sortValue)="filterTaskList($event)"
       [taskList$]="taskList$"
     ></app-sort>
+    <app-group-by
+      (groupByTaskList)="groupTaskList($event)"
+      [taskList$]="taskList$">
+    </app-group-by>
   </div>
-  <app-group-by></app-group-by>
-  <div class="show-task-lists">
-    @for (task of taskList$ | async; track task) {
-      <div class="show-task-lists-block" (click)="openTask(task.id)">
-        <div class="show-task-lists-block_name">
-          <img
-            class="show-task-lists-block_check"
-            width="16"
-            height="16"
-            ngSrc="assets/svg/check.svg" alt="">
-          <span>{{ task.title }}</span>
-        </div>
-        <div>
-          <p class="show-task-lists-block_round"
-             [backgroundColor]="{'status':task.status}">{{ task.status }}</p>
-          <p class="show-task-lists-block_round"
-             [backgroundColor]="{'priority':task.priority}">{{ task.priority }}</p>
-        </div>
-        <div class="show-task-lists-block-userBlock">
-          <div class="show-task-lists-block-userBlock">
-            @for (users of task?.performers; track users) {
-              <p class="show-task-lists-block-userBlock_usersName">{{ users | slice:0:1 }}</p>
+
+  <div [ngClass]="(groupByTaskList$ | async)?.length ? 'show-task-list-group' :'show-task-lists'">
+    @if (!(groupByTaskList$ | async)?.length) {
+      @for (task of taskList$ | async; track task) {
+        <app-task-list-item
+          [taskItem]="task"
+        ></app-task-list-item>
+      }
+    } @else {
+      @for (task of groupByTaskList$ | async; track task) {
+        @for (key of Object.keys(task); track key) {
+          <div class="show-task-lists_group">
+            <h1> {{ key }}</h1>
+            @for (value of task[key]; track value) {
+              <app-task-list-item
+                [taskItem]="value"
+              ></app-task-list-item>
             }
           </div>
-          <div>
-            <p>{{ task.deadline | datePipe }}</p>
-          </div>
-        </div>
-      </div>
+        }
+      }
     }
+
+
   </div>
 </section>

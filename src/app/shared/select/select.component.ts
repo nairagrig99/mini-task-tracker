@@ -1,7 +1,6 @@
 import {Component, EventEmitter, forwardRef, Input, Output} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 import {SelectModelInterface} from "../interface/select-model.interface";
-
 @Component({
   selector: 'app-select',
   templateUrl: './select.component.html',
@@ -40,7 +39,6 @@ export class SelectComponent implements ControlValueAccessor {
 
   registerOnChange(fn: any): void {
     this.onChange = fn;
-
   }
 
   registerOnTouched(fn: any): void {

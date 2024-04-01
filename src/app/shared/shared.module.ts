@@ -18,6 +18,7 @@ import {DatePipe} from "./pipe/date.pipe";
 import {FilterComponent} from "./filter/filter.component";
 import {SortComponent} from "./sort/sort.component";
 import {GroupByComponent} from "./group-by/group-by.component";
+import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {GroupByComponent} from "./group-by/group-by.component";
     DatePipe,
     FilterComponent,
     SortComponent,
-    GroupByComponent
+    GroupByComponent,
+    TaskListItemComponent
   ],
   imports: [
     CommonModule,
@@ -61,7 +63,8 @@ import {GroupByComponent} from "./group-by/group-by.component";
     DatePipe,
     FilterComponent,
     SortComponent,
-    GroupByComponent
+    GroupByComponent,
+    TaskListItemComponent
   ],
   providers: [MatDatepickerModule]
 })
