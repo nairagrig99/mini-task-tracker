@@ -30,7 +30,7 @@ export class UpdateTaskAction implements Action {
 export class RemoveTaskAction implements Action {
   readonly type = AddTask.RemoveTask;
 
-  constructor(public payload: string) {}
+  constructor(public payload: number) {}
 }
 
 export type TaskAction = AddTaskAction

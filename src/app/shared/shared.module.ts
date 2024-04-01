@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatDialogActions, MatDialogClose, MatDialogContent} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField, MatFormFieldModule, MatHint} from "@angular/material/form-field";
@@ -54,7 +54,8 @@ import {ConvertTitlePipe} from "./pipe/convert-title.pipe";
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSelectTrigger
+    MatSelectTrigger,
+    NgOptimizedImage
   ],
   exports: [
     MultiSelectComponent,

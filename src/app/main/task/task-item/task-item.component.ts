@@ -7,6 +7,7 @@ import {displayedColumns} from "../../../shared/select-value/default-value";
 import {PopupComponent} from "../../popup/popup.component";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskListApiService} from "../../../shared/services/task-list-api.service";
+import {RemoveTaskAction} from "../../../shared/store/task-action";
 
 @Component({
   selector: 'app-task-item',
@@ -45,6 +46,10 @@ export class TaskItemComponent implements OnInit {
         edit: true,
       }
     });
+  }
+
+  public removeTask(){
+    this.store.dispatch(new RemoveTaskAction(this.taskList[0].id))
   }
 
 }
