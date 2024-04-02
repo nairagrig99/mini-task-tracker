@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {concatMap, first, Observable, reduce, combineLatest, tap, take, scan, takeUntil, map} from "rxjs";
+import {concatMap, first, Observable, reduce, combineLatest, tap, take, scan, takeUntil, map, filter} from "rxjs";
 import {TaskInterface} from "../interface/task-interface";
 import {groupBy} from "../select-value/default-value";
 import {SelectModelInterface} from "../interface/select-model.interface";
@@ -38,19 +38,25 @@ export class GroupByComponent extends Unsubscriber implements OnInit, OnDestroy 
     return this.form.get('groupTaskList') as FormControl;
   }
 
-  private initForm(): void {
-    this.form = this.formBuilder.group({
-      groupTaskList: [null]
-    })
-  }
 
   ngOnInit(): void {
     this.initForm();
     this.groupTaskList();
   }
 
+  private initForm(): void {
+    this.form = this.formBuilder.group({
+      groupTaskList: [null]
+    })
+  }
+
   private groupTaskList(): void {
-    this.groupTaskListControl.valueChanges.subscribe(() => {
+    this.groupTaskListControl.valueChanges.pipe(filter((form) => {
+      if (!form) {
+        this.groupByTaskList.emit([])
+      }
+      return !!form
+    })).subscribe(() => {
       this.taskList$.pipe(
         first(),
         concatMap((taskLists: TaskInterface[]) => taskLists),
@@ -62,20 +68,20 @@ export class GroupByComponent extends Unsubscriber implements OnInit, OnDestroy 
           acc[groupKey].push(curr);
           return acc;
         }, {}),
-        map((acc) => {
+        map((acc: GroupTaskInterface) => {
             const keys = Object.keys(acc);
             const sorted = keys.sort((a: string, b: string) => {
               return acc[b].length - acc[a].length
             });
             const sortedObj: GroupTaskInterface = {};
-            sorted.forEach((key: string) => {
+            sorted.forEach((key: string): void => {
               sortedObj[key] = acc[key];
             })
             return sortedObj;
           }
         ),
         takeUntil(this.ngUnsubscribe),
-      ).subscribe((groupedBy) => this.groupByTaskList.emit([groupedBy]))
+      ).subscribe((groupedBy: GroupTaskInterface) => this.groupByTaskList.emit([groupedBy]))
     })
   }
 

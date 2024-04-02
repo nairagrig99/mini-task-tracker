@@ -1,6 +1,5 @@
 import {Action} from "@ngrx/store";
 import {TaskInterface} from "../interface/task-interface";
-import {Update} from "@ngrx/entity";
 
 export enum AddTask {
   GetAllTask = '[Get Task] GetAllTask',

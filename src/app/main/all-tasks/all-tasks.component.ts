@@ -24,7 +24,7 @@ export class AllTasksComponent extends Unsubscriber implements OnInit {
   }
 
   public filterTaskList(filterValue: any): void {
-    this.taskList$ = of([filterValue]);
+    this.taskList$ = of(filterValue);
   }
 
   public groupTaskList(groupTaskList: GroupTaskInterface[]): void {

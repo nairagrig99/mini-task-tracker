@@ -2,7 +2,12 @@
   @if (label !== '') {
     <div class="select-accessor_label">
       <mat-label>{{ label }}</mat-label>
+
     </div>
+  }
+
+  @if (selectValue) {
+    <mat-icon (click)="removeSelectedValue()">close</mat-icon>
   }
   <mat-form-field>
     <mat-select [(ngModel)]="selectedValue"

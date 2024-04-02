@@ -3,7 +3,7 @@ import {SelectModelInterface} from "../interface/select-model.interface";
 import {performers, statusValue} from "../select-value/default-value";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {TaskInterface} from "../interface/task-interface";
-import {combineLatest, map, Observable, takeUntil} from "rxjs";
+import {combineLatest, filter, map, Observable, takeUntil, tap} from "rxjs";
 import {Unsubscriber} from "../../core/unsubscrib/unsubscriber";
 
 @Component({
@@ -54,7 +54,15 @@ export class FilterComponent extends Unsubscriber implements OnInit, OnDestroy {
   public filterDuringFormChanges(): void {
     combineLatest([this.form.valueChanges, this.taskList$])
       .pipe(
-        map(([form, taskList]) => {
+        filter(([form, task]) => {
+          const isEmpty = Object.values(form).some((val) => val);
+
+          if (!isEmpty) {
+            this.changeFilter.next(task);
+          }
+          return isEmpty
+        }),
+        map(([form, taskList], index) => {
           return taskList.filter((task) =>
             // @ts-ignore
             !this.isNull(task.deadline) && !this.isNull(task.performers) && !this.isNull(task.status))
@@ -82,7 +90,7 @@ export class FilterComponent extends Unsubscriber implements OnInit, OnDestroy {
             })
         }),
         takeUntil(this.ngUnsubscribe)
-      ).subscribe((filterTaskList) => this.changeFilter.emit(filterTaskList))
+      ).subscribe((filterTaskList: TaskInterface[]) => this.changeFilter.emit(filterTaskList))
   }
 
   private isEqualDate(form: any, taskItem: any): boolean {

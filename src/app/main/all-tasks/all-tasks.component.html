@@ -19,6 +19,7 @@
 
   <div [ngClass]="(groupByTaskList$ | async)?.length ? 'show-task-list-group' :'show-task-lists'">
     @if (!(groupByTaskList$ | async)?.length) {
+
       @for (task of taskList$ | async; track task) {
         <app-task-list-item
           [taskItem]="task"

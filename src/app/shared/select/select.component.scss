@@ -3,6 +3,14 @@
 
 .select-accessor {
   @include flex-align-center;
+  position: relative;
+
+  mat-icon {
+    position: absolute;
+    z-index: 999;
+    right: 7px;
+    top: 17px;
+  }
 
   &_label {
     width: 150px;
