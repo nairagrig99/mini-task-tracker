@@ -19,6 +19,7 @@
 
   <div [ngClass]="(groupByTaskList$ | async)?.length ? 'show-task-list-group' :'show-task-lists'">
     @if (!(groupByTaskList$ | async)?.length) {
+
       @for (task of taskList$ | async; track task) {
         <app-task-list-item
           [taskItem]="task"
@@ -28,7 +29,7 @@
       @for (task of groupByTaskList$ | async; track task) {
         @for (key of Object.keys(task); track key) {
           <div class="show-task-lists_group">
-            <h1> {{ key }}</h1>
+            <h1> {{ key | convert }}</h1>
             @for (value of task[key]; track value) {
               <app-task-list-item
                 [taskItem]="value"
@@ -38,7 +39,5 @@
         }
       }
     }
-
-
   </div>
 </section>

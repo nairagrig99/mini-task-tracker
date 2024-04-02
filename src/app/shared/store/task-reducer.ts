@@ -1,7 +1,6 @@
 import {AddTask, TaskAction} from "./task-action";
 import {TaskInterface} from "../interface/task-interface";
-import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {on} from "@ngrx/store";
+import {createEntityAdapter, EntityState} from '@ngrx/entity';
 
 export const adapter = createEntityAdapter<TaskInterface>({
   selectId: (e) => e.id
@@ -28,12 +27,9 @@ export function taskReducer
         changes: action.payload
       }, {...state});
 
-    // case AddTask.RemoveTask: {
-    //   return {
-    //     ...state,
-    //     task: action.payload
-    //   }
-    // }
+    case AddTask.RemoveTask: {
+      return adapter.removeOne(action.payload, state);
+    }
 
     default:
       return state

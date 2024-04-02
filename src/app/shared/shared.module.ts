@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {MatDialogActions, MatDialogClose, MatDialogContent} from "@angular/material/dialog";
 import {MatIcon} from "@angular/material/icon";
 import {MatFormField, MatFormFieldModule, MatHint} from "@angular/material/form-field";
@@ -19,6 +19,7 @@ import {FilterComponent} from "./filter/filter.component";
 import {SortComponent} from "./sort/sort.component";
 import {GroupByComponent} from "./group-by/group-by.component";
 import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
+import {ConvertTitlePipe} from "./pipe/convert-title.pipe";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
     MultiSelectComponent,
     ColorDirective,
     DatePipe,
+    ConvertTitlePipe,
     FilterComponent,
     SortComponent,
     GroupByComponent,
@@ -52,7 +54,8 @@ import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSelectTrigger
+    MatSelectTrigger,
+    NgOptimizedImage
   ],
   exports: [
     MultiSelectComponent,
@@ -61,6 +64,7 @@ import {TaskListItemComponent} from "./task-list-item/task-list-item.component";
     SelectComponent,
     ColorDirective,
     DatePipe,
+    ConvertTitlePipe,
     FilterComponent,
     SortComponent,
     GroupByComponent,
